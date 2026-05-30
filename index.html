@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#2c3e50">
+    <meta name="description" content="Application de jeu avec plusieurs modes (Duel, Action, Quiz)">
+    
+    <title>Game Modes - PWA</title>
+    
+    <!-- Lien vers le fichier CSS -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Manifest pour la PWA -->
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- Icône PWA -->
+    <link rel="icon" type="image/png" sizes="192x192" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><rect fill='%232c3e50' width='192' height='192'/><text x='50%' y='50%' font-size='100' font-weight='bold' fill='white' text-anchor='middle' dy='.3em'>G</text></svg>">
+</head>
+<body>
+    <!-- ============================================
+         ÉCRAN PRINCIPAL (Menu)
+         ============================================ -->
+    <div id="mainMenu" class="screen active">
+        <!-- En-tête avec titre et bouton "Ajouter des joueurs" -->
+        <header class="header">
+            <h1 class="title">Game Modes</h1>
+            <!-- Bouton "Ajouter des joueurs" en haut à droite -->
+            <button id="addPlayersBtn" class="btn btn-add-players">
+                ➕ Ajouter des joueurs
+            </button>
+        </header>
+
+        <!-- Contenu principal centré -->
+        <main class="main-content">
+            <!-- Liste déroulante pour choisir le mode de jeu -->
+            <div class="select-mode-container">
+                <label for="gameMode" class="label">Choisissez un mode de jeu :</label>
+                <select id="gameMode" class="select">
+                    <option value="">-- Sélectionnez un mode --</option>
+                    <option value="duel">⚔️ Duel</option>
+                    <option value="action">🎬 Action</option>
+                    <option value="quiz">❓ Quiz</option>
+                </select>
+            </div>
+
+            <!-- Bouton "Démarrer" pour lancer le mode sélectionné -->
+            <button id="startGameBtn" class="btn btn-start-game">
+                ▶️ Démarrer
+            </button>
+        </main>
+
+        <!-- Pied de page affichant le nombre de joueurs -->
+        <footer class="footer">
+            <p id="playerCount">Joueurs : 0</p>
+        </footer>
+    </div>
+
+    <!-- ============================================
+         ÉCRAN D'AJOUT DE JOUEURS
+         ============================================ -->
+    <div id="addPlayersScreen" class="screen">
+        <header class="header">
+            <h2 class="title">Ajouter des joueurs</h2>
+        </header>
+
+        <main class="main-content">
+            <!-- Conteneur pour l'ajout de joueurs -->
+            <div class="add-player-form">
+                <!-- Champ texte pour entrer le nom du joueur -->
+                <input 
+                    type="text" 
+                    id="playerNameInput" 
+                    class="input" 
+                    placeholder="Entrez le nom du joueur..."
+                    maxlength="30"
+                >
+                <!-- Bouton pour ajouter le joueur -->
+                <button id="addPlayerBtn" class="btn btn-primary">
+                    ✅ Ajouter
+                </button>
+            </div>
+
+            <!-- Liste des joueurs actuels -->
+            <div class="players-list-container">
+                <h3>Joueurs actuels :</h3>
+                <ul id="playersList" class="players-list">
+                    <!-- Les joueurs seront affichés ici dynamiquement -->
+                </ul>
+            </div>
+
+            <!-- Boutons d'action -->
+            <div class="button-group">
+                <!-- Bouton pour revenir au menu principal -->
+                <button id="backToMenuBtn" class="btn btn-secondary">
+                    ← Retour au menu
+                </button>
+                <!-- Bouton pour effacer tous les joueurs -->
+                <button id="clearPlayersBtn" class="btn btn-danger">
+                    🗑️ Effacer tous les joueurs
+                </button>
+            </div>
+        </main>
+    </div>
+
+    <!-- ============================================
+         ÉCRAN DU MODE DUEL
+         ============================================ -->
+    <div id="duelScreen" class="screen">
+        <header class="header">
+            <h2 class="title">⚔️ Mode Duel</h2>
+            <!-- Bouton retour -->
+            <button id="backFromDuelBtn" class="btn btn-back">←</button>
+        </header>
+
+        <main class="main-content">
+            <!-- Conteneur affichant le duel actuel -->
+            <div class="duel-container">
+                <div class="duel-display">
+                    <!-- Affichage du duel avec les deux joueurs -->
+                    <div class="duel-players">
+                        <div class="player-card">
+                            <h3 id="player1Name" class="player-name">Joueur 1</h3>
+                        </div>
+                        <div class="vs-text">VS</div>
+                        <div class="player-card">
+                            <h3 id="player2Name" class="player-name">Joueur 2</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Boutons d'action pour les duels -->
+                <div class="duel-actions">
+                    <!-- Bouton pour passer au duel suivant -->
+                    <button id="nextDuelBtn" class="btn btn-primary">
+                        ▶️ Duel suivant
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- ============================================
+         ÉCRAN DU MODE ACTION
+         ============================================ -->
+    <div id="actionScreen" class="screen">
+        <header class="header">
+            <h2 class="title">🎬 Mode Action</h2>
+            <!-- Bouton retour -->
+            <button id="backFromActionBtn" class="btn btn-back">←</button>
+        </header>
+
+        <main class="main-content">
+            <p class="placeholder-text">
+                Le mode Action sera implémenté par tes soins.
+            </p>
+        </main>
+    </div>
+
+    <!-- ============================================
+         ÉCRAN DU MODE QUIZ
+         ============================================ -->
+    <div id="quizScreen" class="screen">
+        <header class="header">
+            <h2 class="title">❓ Mode Quiz</h2>
+            <!-- Bouton retour -->
+            <button id="backFromQuizBtn" class="btn btn-back">←</button>
+        </header>
+
+        <main class="main-content">
+            <p class="placeholder-text">
+                Le mode Quiz sera implémenté par tes soins.
+            </p>
+        </main>
+    </div>
+
+    <!-- ============================================
+         SCRIPTS
+         ============================================ -->
+    <!-- Lien vers le fichier JavaScript principal -->
+    <script src="app.js"></script>
+</body>
+</html>
