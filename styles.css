@@ -1,0 +1,513 @@
+/* ============================================
+   RÉINITIALISATION ET STYLES GLOBAUX
+   ============================================ */
+
+* {
+    /* Réinitialise les marges et paddings par défaut */
+    margin: 0;
+    padding: 0;
+    /* box-sizing: border-box permet d'inclure les paddings dans la largeur/hauteur */
+    box-sizing: border-box;
+}
+
+html, body {
+    /* Définit la hauteur pour que le contenu prenne toute la hauteur */
+    height: 100%;
+    width: 100%;
+    /* Couleur de fond et texte */
+    background-color: #f5f5f5;
+    color: #333;
+    /* Police générale */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ============================================
+   STRUCTURE PRINCIPALE
+   ============================================ */
+
+body {
+    /* Utilise flexbox pour centrer verticalement et horizontalement */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Flex-direction en column pour que l'écran prenne toute la hauteur */
+    flex-direction: column;
+}
+
+/* ============================================
+   GESTION DES ÉCRANS
+   ============================================ */
+
+/* Classe .screen : chaque écran est un conteneur full-width */
+.screen {
+    /* Largeur adaptée aux appareils mobiles */
+    width: 100%;
+    max-width: 600px;
+    height: 100vh;
+    /* Le premier écran est visible par défaut */
+    display: none;
+    flex-direction: column;
+    background: white;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Classe .active : affiche l'écran actif */
+.screen.active {
+    display: flex;
+}
+
+/* ============================================
+   EN-TÊTE
+   ============================================ */
+
+.header {
+    /* Flexbox pour aligner le titre et le bouton en ligne */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* Padding pour l'espace intérieur */
+    padding: 20px;
+    /* Couleur de fond du header */
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    /* Couleur du texte en blanc */
+    color: white;
+    /* Ombre pour la profondeur */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.title {
+    /* Taille du titre */
+    font-size: 28px;
+    font-weight: bold;
+}
+
+/* ============================================
+   CONTENU PRINCIPAL
+   ============================================ */
+
+.main-content {
+    /* Flexbox pour centrer le contenu verticalement et horizontalement */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* Padding pour l'espace intérieur */
+    padding: 40px 20px;
+    /* Flex: 1 pour que le contenu prenne tout l'espace disponible */
+    flex: 1;
+}
+
+/* ============================================
+   PIED DE PAGE
+   ============================================ */
+
+.footer {
+    /* Flexbox pour centrer le texte */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Padding et couleur de fond */
+    padding: 15px;
+    background-color: #ecf0f1;
+    border-top: 1px solid #bdc3c7;
+    font-size: 14px;
+    color: #7f8c8d;
+}
+
+/* ============================================
+   ÉLÉMENTS DE FORMULAIRE
+   ============================================ */
+
+/* Style pour les labels */
+.label {
+    /* Taille et style du texte */
+    font-size: 16px;
+    font-weight: 500;
+    /* Marge basse pour l'espacement */
+    margin-bottom: 10px;
+}
+
+/* Style pour les champs input */
+.input {
+    /* Largeur et padding */
+    width: 100%;
+    max-width: 400px;
+    padding: 12px 15px;
+    /* Bordure et arrondi */
+    border: 2px solid #bdc3c7;
+    border-radius: 8px;
+    /* Police et taille */
+    font-size: 14px;
+    /* Marge basse */
+    margin-bottom: 10px;
+    /* Transition pour l'effet au focus */
+    transition: border-color 0.3s;
+}
+
+/* Effet au focus du champ input */
+.input:focus {
+    /* Bordure bleue au focus */
+    border-color: #3498db;
+    /* Enlève le contour par défaut du navigateur */
+    outline: none;
+    /* Ombre pour la profondeur */
+    box-shadow: 0 0 10px rgba(52, 152, 219, 0.2);
+}
+
+/* Style pour les listes déroulantes (select) */
+.select {
+    /* Largeur et padding */
+    width: 100%;
+    max-width: 400px;
+    padding: 12px 15px;
+    /* Bordure et arrondi */
+    border: 2px solid #bdc3c7;
+    border-radius: 8px;
+    /* Police et taille */
+    font-size: 14px;
+    /* Marge basse */
+    margin-bottom: 20px;
+    /* Curseur pointer pour indiquer qu'c'est cliquable */
+    cursor: pointer;
+    /* Couleur de fond */
+    background-color: white;
+}
+
+/* Effet au focus de la liste déroulante */
+.select:focus {
+    /* Bordure bleue au focus */
+    border-color: #3498db;
+    /* Enlève le contour par défaut du navigateur */
+    outline: none;
+}
+
+/* ============================================
+   BOUTONS
+   ============================================ */
+
+.btn {
+    /* Padding pour l'espace intérieur */
+    padding: 12px 20px;
+    /* Bordure et arrondi */
+    border: none;
+    border-radius: 8px;
+    /* Police et taille */
+    font-size: 14px;
+    font-weight: 500;
+    /* Curseur pointer pour indiquer qu'c'est cliquable */
+    cursor: pointer;
+    /* Transition pour l'effet au survol */
+    transition: all 0.3s;
+    /* Ombre par défaut */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Effet au survol des boutons */
+.btn:hover {
+    /* Déplacement du bouton vers le haut */
+    transform: translateY(-2px);
+    /* Ombre augmentée */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Effet au clic des boutons */
+.btn:active {
+    /* Déplacement vers le bas */
+    transform: translateY(0);
+}
+
+/* Bouton "Ajouter des joueurs" en haut à droite */
+.btn-add-players {
+    /* Couleur de fond bleu */
+    background-color: #3498db;
+    color: white;
+    padding: 10px 15px;
+    font-size: 12px;
+}
+
+.btn-add-players:hover {
+    background-color: #2980b9;
+}
+
+/* Bouton "Démarrer" */
+.btn-start-game {
+    /* Couleur de fond vert */
+    background-color: #27ae60;
+    color: white;
+    font-size: 16px;
+    padding: 15px 30px;
+}
+
+.btn-start-game:hover {
+    background-color: #229954;
+}
+
+/* Bouton primaire (bleu) */
+.btn-primary {
+    background-color: #3498db;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #2980b9;
+}
+
+/* Bouton secondaire (gris) */
+.btn-secondary {
+    background-color: #95a5a6;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #7f8c8d;
+}
+
+/* Bouton danger (rouge) */
+.btn-danger {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: #c0392b;
+}
+
+/* Bouton retour */
+.btn-back {
+    background-color: #95a5a6;
+    color: white;
+    padding: 8px 12px;
+    font-size: 18px;
+}
+
+.btn-back:hover {
+    background-color: #7f8c8d;
+}
+
+/* ============================================
+   CONTENEURS SPÉCIFIQUES
+   ============================================ */
+
+/* Conteneur pour le formulaire d'ajout de joueur */
+.add-player-form {
+    /* Flexbox en colonne pour empiler les éléments */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Marge basse */
+    margin-bottom: 30px;
+}
+
+/* Conteneur pour la liste des joueurs */
+.players-list-container {
+    /* Flexbox en colonne */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Marge basse */
+    margin-bottom: 30px;
+    /* Largeur maximale */
+    width: 100%;
+    max-width: 400px;
+}
+
+.players-list-container h3 {
+    /* Marge basse */
+    margin-bottom: 15px;
+    /* Couleur et taille */
+    font-size: 16px;
+    color: #2c3e50;
+}
+
+/* Style de la liste des joueurs */
+.players-list {
+    /* Enlève les puces de la liste */
+    list-style: none;
+    /* Flexbox en colonne */
+    display: flex;
+    flex-direction: column;
+    /* Largeur maximale */
+    width: 100%;
+}
+
+/* Style de chaque élément de la liste */
+.players-list li {
+    /* Padding et bordure */
+    padding: 10px 15px;
+    margin-bottom: 8px;
+    /* Couleur de fond grise */
+    background-color: #ecf0f1;
+    /* Bordure */
+    border-left: 4px solid #3498db;
+    /* Arrondi */
+    border-radius: 4px;
+    /* Affichage en flexbox pour aligner le texte et le bouton */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Bouton pour supprimer un joueur */
+.btn-remove-player {
+    /* Couleur de fond rouge */
+    background-color: #e74c3c;
+    color: white;
+    /* Padding et taille */
+    padding: 5px 10px;
+    font-size: 12px;
+}
+
+.btn-remove-player:hover {
+    background-color: #c0392b;
+}
+
+/* Groupe de boutons */
+.button-group {
+    /* Flexbox en colonne */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    /* Largeur maximale */
+    width: 100%;
+    max-width: 400px;
+}
+
+/* ============================================
+   MODE DUEL
+   ============================================ */
+
+/* Conteneur principal du duel */
+.duel-container {
+    /* Flexbox en colonne */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* Largeur maximale */
+    width: 100%;
+    max-width: 500px;
+}
+
+/* Affichage du duel */
+.duel-display {
+    /* Marge basse */
+    margin-bottom: 40px;
+    /* Largeur totale */
+    width: 100%;
+}
+
+/* Conteneur pour les deux joueurs du duel */
+.duel-players {
+    /* Flexbox pour aligner les joueurs horizontalement */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Carte d'un joueur */
+.player-card {
+    /* Flexbox en colonne pour centrer le contenu */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* Padding et couleur de fond */
+    padding: 30px;
+    background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+    /* Couleur du texte en blanc */
+    color: white;
+    /* Bordure et arrondi */
+    border-radius: 12px;
+    /* Ombre */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    /* Largeur minimum */
+    min-width: 120px;
+    text-align: center;
+}
+
+/* Nom du joueur */
+.player-name {
+    /* Taille et poids du texte */
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Texte "VS" entre les deux joueurs */
+.vs-text {
+    /* Taille et poids du texte */
+    font-size: 24px;
+    font-weight: bold;
+    color: #e74c3c;
+}
+
+/* Conteneur pour les actions du duel */
+.duel-actions {
+    /* Flexbox en colonne */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    /* Largeur maximale */
+    width: 100%;
+    max-width: 300px;
+}
+
+/* ============================================
+   MODE SÉLECTION
+   ============================================ */
+
+/* Conteneur pour la sélection du mode */
+.select-mode-container {
+    /* Flexbox en colonne pour empiler les éléments */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Marge basse */
+    margin-bottom: 30px;
+}
+
+/* ============================================
+   TEXTE PLACEHOLDER
+   ============================================ */
+
+/* Style pour le texte placeholder */
+.placeholder-text {
+    /* Taille et couleur */
+    font-size: 16px;
+    color: #7f8c8d;
+    /* Texte centré */
+    text-align: center;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+/* Pour les écrans de petite taille (mobile) */
+@media (max-width: 480px) {
+    /* Header */
+    .header {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .title {
+        font-size: 22px;
+    }
+
+    /* Contenu principal */
+    .main-content {
+        padding: 20px 10px;
+    }
+
+    /* Boutons */
+    .btn {
+        width: 100%;
+    }
+
+    /* Cartes de joueur */
+    .player-card {
+        min-width: 100px;
+        padding: 20px;
+    }
+}
